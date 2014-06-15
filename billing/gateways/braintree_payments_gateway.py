@@ -348,8 +348,8 @@ class BraintreePaymentsGateway(Gateway):
                                             type="store",
                                             response=response)
         else:
-            for ii in response.errors.deep_errors:
-                print ii.message
+            for error in response.errors.deep_errors:
+                print(error.message)
             status = "FAILURE"
             transaction_was_unsuccessful.send(sender=self,
                                               type="store",
